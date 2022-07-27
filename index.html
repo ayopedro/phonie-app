@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Phonie - Identify Your Telecom</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="logo">
+          <img src="./images/Group 36892.png" alt="phonie" />
+        </div>
+        <form id="form" class="form">
+          <div class="message"></div>
+          <div class="input-field">
+            <label id="phone-label">
+              <input
+                type="text"
+                placeholder=" "
+                id="phoneNum"
+                name="phoneNumber"
+                autocomplete="off"
+                required
+              />
+              <span class="label-span">Enter phone number</span>
+            </label>
+            <div class="provider-image" id="provider"></div>
+          </div>
+          <!-- <div class="suggestion">
+            <ul class="suggestion-items"></ul>
+          </div> -->
+          <button class="btn">
+            reveal provider <span><i class="fa-solid fa-eye"></i></span>
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
