@@ -5,27 +5,48 @@ let provider = document.getElementById("provider");
 let form = document.getElementById("form");
 
 btn.addEventListener("click", (event) => {
-
-    // prevents button default behavior
-    event.preventDefault();
+  // prevents button default behavior
+  event.preventDefault();
 
   let pattern = /((\+234?)|0)?[ -]?(?<network>\d{4})[ -]?(\d{3})[ -]?(\d{4})/;
   let str = phoneNum.value;
 
-  if (str === "" || !(str.match(pattern))) {
+  console.log(str.length);
+
+  // to check the validity of the number before validating the number
+  let validity = false;
+
+  if (str.includes("+234") && str.length === 14) {
+    validity = true;
+  }
+
+  if (str.includes("+2340") && str.length === 15) {
+    validity = true;
+  }
+
+  if (str.length === 11) {
+    validity = true;
+  }
+
+  // check for incorrect inputs
+
+  if (str === "" || !str.match(pattern) || !validity) {
     phoneNum.classList.add("invalid");
+    messageBox.style.display = "block";
     messageBox.classList.add("invalid");
     messageBox.innerText = "Please enter a valid number";
     setTimeout(() => {
       phoneNum.classList.remove("invalid");
       messageBox.classList.remove("invalid");
       messageBox.innerText = "";
+      messageBox.style.display = "none";
     }, 3000);
     return;
   }
 
+  // create groups in the pattern.
   let groups = str.match(pattern).groups;
-
+  // select named group to carry check on
   let network = groups.network;
 
   const MOBILE_NETWORKS = {
@@ -58,47 +79,52 @@ btn.addEventListener("click", (event) => {
 
   if (numContains(MOBILE_NETWORKS.MTN, network)) {
     phoneNum.classList.add("valid");
+    messageBox.style.display = "block";
     messageBox.classList.add("valid");
     messageBox.innerText = "SUCCESSFUL. Your mobile network is MTN";
     provider.style.backgroundImage = "url(./images/mtn-nigeria.png)";
   } else if (numContains(MOBILE_NETWORKS.ETISALAT, network)) {
     phoneNum.classList.add("valid");
+    messageBox.style.display = "block";
     messageBox.classList.add("valid");
     messageBox.innerText = "SUCCESSFUL. Your mobile network is 9MOBILE";
     provider.style.backgroundImage = "url(./images/9mobile.png)";
   } else if (numContains(MOBILE_NETWORKS.AIRTEL, network)) {
     phoneNum.classList.add("valid");
+    messageBox.style.display = "block";
     messageBox.classList.add("valid");
     messageBox.innerText = "SUCCESSFUL. Your mobile network is AIRTEL";
     provider.style.backgroundImage = "url(./images/airtel-nigeria.png)";
   } else if (numContains(MOBILE_NETWORKS.GLO, network)) {
     phoneNum.classList.add("valid");
+    messageBox.style.display = "block";
     messageBox.classList.add("valid");
     messageBox.innerText = "SUCCESSFUL. Your mobile network is GLO";
     provider.style.backgroundImage = "url(./images/globacom-limited.png)";
   } else {
     phoneNum.classList.add("invalid");
+    messageBox.style.display = "block";
     messageBox.classList.add("invalid");
     messageBox.innerText = "UNSUCCESSFUL. Your mobile network is Unverifiable";
     provider.style.backgroundImage = "url(./images/rectangle.png)";
 
     setTimeout(() => {
-        phoneNum.classList.remove("invalid");
-        messageBox.classList.remove("invalid");
-        messageBox.innerText = "";
-      }, 3000);
+      phoneNum.classList.remove("invalid");
+      messageBox.classList.remove("invalid");
+      messageBox.innerText = "";
+      messageBox.style.display = "none";
+    }, 3000);
   }
 });
-
 
 // Setting the enter key to perform the button function
 
 phoneNum.addEventListener("keypress", (event) => {
-    // If the user presses the "Enter" key on the keyboard
-    if (event.key === "Enter") {
-      // Cancel the default action
-      event.preventDefault();
-      // Trigger the button element with a click
-      btn.click();
-    }
-  });
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action
+    event.preventDefault();
+    // Trigger the button element with a click
+    btn.click();
+  }
+});
