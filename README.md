@@ -4,4 +4,4 @@ I used regex to detect the phone pattern and i matched it with various network p
 
 I had fun working on this project.
 
-![](./screenshot.png)
+![](./images/screenshot.png)
