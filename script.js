@@ -85,7 +85,8 @@ btn.addEventListener("click", (event) => {
     setTimeout(() => {
         phoneNum.classList.remove("invalid");
         messageBox.classList.remove("invalid");
-      }, 5000);
+        messageBox.innerText = "";
+      }, 3000);
   }
 });
 
