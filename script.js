@@ -9,7 +9,7 @@ btn.addEventListener("click", (event) => {
     // prevents button default behavior
     event.preventDefault();
 
-  let pattern = /((\+234?)|0)?(?<network>\d{4})(\d{7})/;
+  let pattern = /((\+234?)|0)?[ -]?(?<network>\d{4})[ -]?(\d{3})[ -]?(\d{4})/;
   let str = phoneNum.value;
 
   if (str === "" || !(str.match(pattern))) {
