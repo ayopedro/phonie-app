@@ -11,8 +11,6 @@ btn.addEventListener("click", (event) => {
   let pattern = /((\+234?)|0)?[ -]?(?<network>\d{4})[ -]?(\d{3})[ -]?(\d{4})/;
   let str = phoneNum.value;
 
-  console.log(str.length);
-
   // to check the validity of the number before validating the number
   let validity = false;
 
@@ -40,7 +38,7 @@ btn.addEventListener("click", (event) => {
       messageBox.classList.remove("invalid");
       messageBox.innerText = "";
       messageBox.style.display = "none";
-    }, 3000);
+    }, 2000);
     return;
   }
 
@@ -81,31 +79,31 @@ btn.addEventListener("click", (event) => {
     phoneNum.classList.add("valid");
     messageBox.style.display = "block";
     messageBox.classList.add("valid");
-    messageBox.innerText = "SUCCESSFUL. Your mobile network is MTN";
+    messageBox.innerText = "SUCCESSFUL. Your network provider is MTN";
     provider.style.backgroundImage = "url(./images/mtn-nigeria.png)";
   } else if (numContains(MOBILE_NETWORKS.ETISALAT, network)) {
     phoneNum.classList.add("valid");
     messageBox.style.display = "block";
     messageBox.classList.add("valid");
-    messageBox.innerText = "SUCCESSFUL. Your mobile network is 9MOBILE";
+    messageBox.innerText = "SUCCESSFUL. Your network provider is 9MOBILE";
     provider.style.backgroundImage = "url(./images/9mobile.png)";
   } else if (numContains(MOBILE_NETWORKS.AIRTEL, network)) {
     phoneNum.classList.add("valid");
     messageBox.style.display = "block";
     messageBox.classList.add("valid");
-    messageBox.innerText = "SUCCESSFUL. Your mobile network is AIRTEL";
+    messageBox.innerText = "SUCCESSFUL. Your network provider is AIRTEL";
     provider.style.backgroundImage = "url(./images/airtel-nigeria.png)";
   } else if (numContains(MOBILE_NETWORKS.GLO, network)) {
     phoneNum.classList.add("valid");
     messageBox.style.display = "block";
     messageBox.classList.add("valid");
-    messageBox.innerText = "SUCCESSFUL. Your mobile network is GLO";
+    messageBox.innerText = "SUCCESSFUL. Your network provider is GLO";
     provider.style.backgroundImage = "url(./images/globacom-limited.png)";
   } else {
     phoneNum.classList.add("invalid");
     messageBox.style.display = "block";
     messageBox.classList.add("invalid");
-    messageBox.innerText = "UNSUCCESSFUL. Your mobile network is Unverifiable";
+    messageBox.innerText = "UNSUCCESSFUL. Your mobile network provider is Unverifiable";
     provider.style.backgroundImage = "url(./images/rectangle.png)";
 
     setTimeout(() => {
@@ -113,7 +111,7 @@ btn.addEventListener("click", (event) => {
       messageBox.classList.remove("invalid");
       messageBox.innerText = "";
       messageBox.style.display = "none";
-    }, 3000);
+    }, 2000);
   }
 });
 
